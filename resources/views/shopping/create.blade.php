@@ -142,7 +142,7 @@
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <label>Shopping Total Item Price</label>
-                                        <input type="text" class="form-control" name="total_price" placeholder="Total Item Price">
+                                        <input type="text" class="form-control" name="total_price" placeholder="Total Item Price" disabled>
                                     </div>
                                 </div>
                                 <hr>

@@ -47,19 +47,8 @@ class ExpenseController extends Controller
         );
 
         $total_price = 0;
-        $price = 0;
 
-        if ($request->total_price == null && $request->price != null) {
-            $total_price = $request->item_qty * $request->price;
-        } else {
-            $total_price = $request->total_price;
-        }
-
-        if ($request->total_price != null && $request->price == null) {
-            $price = $request->total_price / $request->item_qty;
-        } else {
-            $price = $request->price;
-        }
+        $total_price = $request->item_qty * $request->price;
 
         $item = new Items(
             [
@@ -67,7 +56,7 @@ class ExpenseController extends Controller
                 'item_description' => $request->item_description,
                 'item_category' => $request->item_category,
                 'item_qty' => $request->item_qty,
-                'price' => $price,
+                'price' => $request->price,
                 'total_price' => $total_price,
             ]
         );
@@ -175,6 +164,5 @@ class ExpenseController extends Controller
         $item = Items::with('shopping')->where('shopping_code', $id)->firstOrFail();
         $item->delete();
         $item->shopping->delete();
-
     }
 }
